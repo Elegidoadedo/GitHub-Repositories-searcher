@@ -1,17 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const URI = process.env.REACT_APP_URI;
+
+console.log(process.env.REACT_APP_URI)
+console.log(process.env.REACT_APP_TOKEN)
+const client = new ApolloClient({
+  uri: URI,
+  request: (operation) => {
+    const token = process.env.REACT_APP_TOKEN;
+    console.log('tokeeeen ---->', token)
+    const authorization = token ? `Bearer ${token}`: undefined;
+    console.log('authorization ---->', authorization)
+
+    operation.setContext({
+      headers: {
+        authorization,
+      },
+    });
+  },
+  onError: (error) => console.log(error)
+})
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
