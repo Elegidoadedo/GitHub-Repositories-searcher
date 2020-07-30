@@ -14,7 +14,21 @@ const SEARCHREPOS = gql`
       edges {
         node {
           ... on Repository {
+            description
+            isFork
+            updatedAt
+            url
+            id
             name
+            createdAt
+            url
+            languages(
+              first:100
+            ){
+              nodes{
+                name
+              }
+            }
           }
         }
       }
@@ -31,7 +45,7 @@ const SEARCHREPOS = gql`
   }
 
   export const SearchReposWithQuery = () => (
-    <Query query={SEARCHREPOS} variables= {{ query: 'is:public user:elegidoadedo', type: 'REPOSITORY', first: 50 }}>
+    <Query query={SEARCHREPOS} variables= {{ query: 'user:elegidoadedo fork:true', type: 'REPOSITORY', first: 100 }}>
       {renderProp}
     </Query>
   );
