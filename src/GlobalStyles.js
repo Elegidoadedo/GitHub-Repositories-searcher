@@ -1,4 +1,7 @@
-body {
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyles = createGlobalStyle`
+  body {
   background: #f7f8fb;
   box-sizing: border-box;
   margin: 0;
@@ -13,3 +16,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul, li, h1, h2, h3, p, button, span {
+    margin: 0;
+  }
+`;

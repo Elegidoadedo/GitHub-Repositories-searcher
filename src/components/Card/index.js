@@ -1,16 +1,16 @@
 import React from 'react';
 import { Container, Title, Description, Metadata } from './styles';
 
-export const Card = () => {
+export const Card = ({title, description, metadata, url}) => {
   return <Container>
       <Title>
-        <a href='https://www.google.es'>Github Repo Sample</a>
+        <a href={url}>{title}</a>
       </Title>
       <Description>
-        Pues esta es la prueba de texto del repo
+        {description}
       </Description>
       <Metadata>
-        Sample de metadata. Update some days ago.
+        {metadata}
       </Metadata>
     </Container>
 }
