@@ -30,7 +30,7 @@ const SEARCHUSER_QUERY = gql`
 `;
 const renderProp = ({ loading, error, data='', refetch, variables }) => {
   if (error) return <p> Error...</p>
-  if (loading) return <p> Loeading... </p>
+  if (loading) return <p> Loading... </p>
   const {search } = data;
    return <ProfileWrapper search={search.edges} refetch={refetch} variables={variables} loading={loading}/>
 }

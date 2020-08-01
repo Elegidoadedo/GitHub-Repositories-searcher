@@ -4,6 +4,6 @@ export const Layout = styled.div`
   display: flex;
   flex-wrap: nowrap;
   height: 100%;
-  padding-top: 100px;
+  padding: 100px 0;
   width: 100%;
 `;

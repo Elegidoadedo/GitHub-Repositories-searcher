@@ -28,7 +28,7 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     <Avatar src={avatarUrl} />
     <Name> {name}</Name>
     <Alias> {login}</Alias>
-    <button onClick={handleClick} >Public repositories</button>
+    <button  className="primary-button" onClick={handleClick} >Public repositories</button>
   </Wrapper>
 };
 

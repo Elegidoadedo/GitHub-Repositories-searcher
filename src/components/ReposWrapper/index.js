@@ -9,9 +9,6 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
   const [page, setPage] = useState(1)
   const { searchText } = variables;
 
-  if(loading) return <p> loading...</p>
-
-
   const handlePagination = (action) => {
     switch (action) {
       case 'previous':
@@ -43,11 +40,13 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
 
   return <Wrapper>
     <Input  value={searchText}  onChange={handleChange} placeholder="Find a repository..." />
-      {
-        search.map( ({ node }) => <Card title={node.name} description={node.description} metadata={node.updatedAt} url={node.url} key={node.id}/>)
+
+      {loading 
+        ? <p> loading...</p>
+        : search.map( ({ node }) => <Card title={node.name} description={node.description} metadata={node.updatedAt} url={node.url} key={node.id}/>)
       }
-      {page > 1 && <button onClick={()=> handlePagination('previous')}>Prev Page</button>}
-      { page < (Number(repositoryCount)/10) && repositoryCount > 10 && <button onClick={()=> handlePagination('next')}>Next Page</button>}
+      {page > 1 && <button  onClick={()=> handlePagination('previous')}>Prev Page</button>}
+      { page < (Number(repositoryCount)/10) && repositoryCount > 10 && <button className="primary-button" onClick={()=> handlePagination('next')}>Next Page</button>}
       <span>Showing from {(page - 1) * 10} to {page * 10} of {repositoryCount}</span>
   </Wrapper>
 

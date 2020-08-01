@@ -6,7 +6,6 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin-left: 10%;
-  /* align-items: center; */
 `;
 
 export const Avatar = styled.img`
