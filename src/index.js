@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './pages/App/index.js';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import Context from './Context';
 
 const URI = process.env.REACT_APP_URI;
 const client = new ApolloClient({
@@ -22,9 +23,11 @@ const client = new ApolloClient({
 
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <Context.Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>,
   document.getElementById('root')
 );
 
