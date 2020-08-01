@@ -17,7 +17,7 @@ code {
     monospace;
 }
 
-ul, li, h1, h2, h3, p, button, span {
+ul, li, h1, h2, h3, h4, p, button, span {
     margin: 0;
   }
 `;

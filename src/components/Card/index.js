@@ -10,7 +10,7 @@ export const Card = ({title, description, metadata, url}) => {
         {description}
       </Description>
       <Metadata>
-        {metadata}
+        Last update {metadata}
       </Metadata>
     </Container>
 }
