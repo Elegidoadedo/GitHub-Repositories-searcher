@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { ReposWrapper } from '../components/ReposWrapper'
 
 const SEARCHREPOS = gql`
   query search($query: String!, $type: SearchType!, $first: Int) {
@@ -14,24 +15,34 @@ const SEARCHREPOS = gql`
       edges {
         node {
           ... on Repository {
+            description
+            isFork
+            updatedAt
+            url
+            id
             name
+            createdAt
+            url
+            languages(
+              first:100
+            ){
+              nodes{
+                name
+              }
+            }
           }
         }
       }
     }
   }`;
-  const renderProp = ({ loading, error, data }) => {
-    if (loading) return <p> loading...</p>
+  const renderProp = ({ loading, error, data='', refetch, variables }) => {
     if (error) return <p> Error...</p>
-    const {search} = data;
-    console.log('data ----->', search.edges)
-    return <ul>
-      {search.edges.map( ele => <li>{ele.node.name}</li>)}
-    </ul>
+    const {search } = data;
+    return <ReposWrapper search={search.edges} refetch={refetch} variables={variables} loading={loading}/>
   }
 
   export const SearchReposWithQuery = () => (
-    <Query query={SEARCHREPOS} variables= {{ query: 'is:public user:elegidoadedo', type: 'REPOSITORY', first: 50 }}>
+    <Query query={SEARCHREPOS} variables= {{ query: `user:elegidoadedo fork:true`, type: 'REPOSITORY', first: 100, searchText:''}}>
       {renderProp}
     </Query>
   );
