@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-// import _debounce from 'lodash/debounce';
+import React, { useState, useContext, useCallback } from 'react';
+import debounce from 'lodash/debounce';
 import { Wrapper, Input } from './styles';
 import { Context } from '../../Context';
 import { Card } from '../Card';
@@ -25,11 +25,13 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
           after: pageInfo.endCursor
         })
         break;
+      default:
+        return;
     }
   }
 
-  const handleChange = (event) => {
-    const { target:{value} } = event;
+  const handleChange = (value) => {
+    console.log('debounce', value)
 
     refetch({
       ...variables,
@@ -38,8 +40,11 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
     })
   };
 
+  const debounceInput = useCallback(debounce(handleChange, 400), [])
+
+
   return <Wrapper>
-    <Input  value={searchText}  onChange={handleChange} placeholder="Find a repository..." />
+    <Input onChange={(event)=> debounceInput(event.target.value)} placeholder="Find a repository..." />
 
       {loading 
         ? <p> loading...</p>

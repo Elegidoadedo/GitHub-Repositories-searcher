@@ -12,7 +12,7 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
 
   useEffect(() => {
     updateUser(search[0].node)
-  }, [search]);
+  },[]);
 
   const { user, updateUser, setIsPublic } = useContext(Context);
   const [userToShow, setUserToShow] = useState(search[0].node);

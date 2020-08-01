@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost';
-import { Context } from '../Context';
 import { ProfileWrapper } from '../components/ProfileWrapper';
 
 
@@ -35,10 +34,8 @@ const renderProp = ({ loading, error, data='', refetch, variables }) => {
    return <ProfileWrapper search={search.edges} refetch={refetch} variables={variables} loading={loading}/>
 }
 
-export const SearchUserWithQuery = () => {
-  const { user } = useContext(Context);
- 
-  return <Query query={SEARCHUSER_QUERY} variables= {{ query: 'elegidoadedo', searchText:''}}>
+export const SearchUserWithQuery = () => (
+  <Query query={SEARCHUSER_QUERY} variables= {{ query: 'elegidoadedo', searchText:''}}>
     {renderProp}
   </Query>
-};
+);
