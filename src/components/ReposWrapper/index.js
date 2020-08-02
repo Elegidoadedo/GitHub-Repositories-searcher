@@ -30,7 +30,7 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
     }
   }
 
-  const handleChange = (value) => {
+  const handleChange = (value, isPublic) => {
     console.log('debounce', value)
 
     refetch({
@@ -44,8 +44,8 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
 
 
   return <Wrapper>
-    <Input onChange={(event)=> debounceInput(event.target.value)} placeholder="Find a repository..." />
-
+    <Input onChange={(event)=> debounceInput(event.target.value, isPublic)} placeholder="Find a repository..." />
+  {console.log('dentro de wraper', isPublic)}
       {loading 
         ? <p> loading...</p>
         : search.map( ({ node }) => <Card title={node.name} description={node.description} metadata={node.updatedAt} url={node.url} key={node.id}/>)
