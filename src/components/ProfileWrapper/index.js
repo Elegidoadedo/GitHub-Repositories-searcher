@@ -9,23 +9,19 @@ const everybody = {
   name: 'Look for all public repositories',
   login: '*',
 }
-export const ProfileWrapper = ({ search , refetch, variables }) => {
+export const ProfileWrapper = ({ search }) => {
 
   useEffect(() => {
     updateUser(search[0].node)
   }, [search]);
 
-  const { user, updateUser, isPublic, setIsPublic } = useContext(Context);
+  const { updateUser, isPublic, setIsPublic } = useContext(Context);
   const [userToShow, setUserToShow] = useState(search[0].node);
   const { avatarUrl, name, login } = userToShow;
 
 
   const handleClick = () => {
     setIsPublic(!isPublic);
-<<<<<<< HEAD
-=======
-
->>>>>>> f381acf15e17d38a040a3bffec1082be83805458
     setUserToShow(everybody)
   };
 
@@ -33,11 +29,7 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     <Avatar src={avatarUrl} />
     <Name> {name}</Name>
     <Alias> {login}</Alias>
-<<<<<<< HEAD
     { !isPublic && <Button onClick={handleClick} label="Public repositories" />}
-=======
-    {!isPublic &&<button  className="primary-button" onClick={handleClick} >Public repositories</button>}
->>>>>>> f381acf15e17d38a040a3bffec1082be83805458
   </Wrapper>
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react';
 import debounce from 'lodash/debounce';
+import PropTypes from 'prop-types';
 import { Wrapper, Input } from './styles';
 import { Context } from '../../Context';
 import { Card } from '../Card/Card';
