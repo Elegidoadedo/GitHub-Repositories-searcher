@@ -12,15 +12,15 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
 
   useEffect(() => {
     updateUser(search[0].node)
-  },[]);
+  }, [search]);
 
-  const { user, updateUser, setIsPublic } = useContext(Context);
+  const { user, updateUser, isPublic, setIsPublic } = useContext(Context);
   const [userToShow, setUserToShow] = useState(search[0].node);
   const { avatarUrl, name, login } = userToShow;
 
 
   const handleClick = () => {
-    setIsPublic(true);
+    setIsPublic(!isPublic);
     setUserToShow(everybody)
   };
 
