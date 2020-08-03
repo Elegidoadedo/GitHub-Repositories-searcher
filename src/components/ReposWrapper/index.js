@@ -2,7 +2,8 @@ import React, { useState, useContext, useCallback } from 'react';
 import debounce from 'lodash/debounce';
 import { Wrapper, Input } from './styles';
 import { Context } from '../../Context';
-import { Card } from '../Card';
+import { Card } from '../Card/Card';
+import Button from '../Button/Button'
 
 export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCount, pageInfo }) => {
   const { isPublic, user: {login}} = useContext(Context);
@@ -48,8 +49,8 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
         ? <p> loading...</p>
         : search.map( ({ node }) => <Card title={node.name} description={node.description} metadata={node.updatedAt} url={node.url} key={node.id}/>)
       }
-      {page > 1 && <button className="primary-button"  onClick={()=> handlePagination('previous')}>Prev Page</button>}
-      { page < (Number(repositoryCount)/10) && repositoryCount > 10 && <button className="primary-button" onClick={()=> handlePagination('next')}>Next Page</button>}
+      {page > 1 && <Button  onClick={()=> handlePagination('previous')} label="Prev Page" />}
+      { page < (Number(repositoryCount)/10) && repositoryCount > 10 && <Button className="primary-button" onClick={()=> handlePagination('next')} label="Next page"  />}
       <span>Showing from {(page - 1) * 10} to {page * 10} of {repositoryCount}</span>
   </Wrapper>
 

@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Context } from '../../Context';
-import { Wrapper, Name, Alias, Avatar } from './styles'
+import { Wrapper, Name, Alias, Avatar } from './styles';
+import Button from '../Button/Button';
 
 const everybody = {
   avatarUrl: 'https://pbs.twimg.com/profile_images/1007061206908260353/lffy8-gX_400x400.jpg',
@@ -12,7 +13,7 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
 
   useEffect(() => {
     updateUser(search[0].node)
-  },[]);
+  }, [search]);
 
   const { user, updateUser, isPublic, setIsPublic } = useContext(Context);
   const [userToShow, setUserToShow] = useState(search[0].node);
@@ -21,7 +22,10 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
 
   const handleClick = () => {
     setIsPublic(!isPublic);
+<<<<<<< HEAD
+=======
 
+>>>>>>> f381acf15e17d38a040a3bffec1082be83805458
     setUserToShow(everybody)
   };
 
@@ -29,7 +33,11 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     <Avatar src={avatarUrl} />
     <Name> {name}</Name>
     <Alias> {login}</Alias>
+<<<<<<< HEAD
+    { !isPublic && <Button onClick={handleClick} label="Public repositories" />}
+=======
     {!isPublic &&<button  className="primary-button" onClick={handleClick} >Public repositories</button>}
+>>>>>>> f381acf15e17d38a040a3bffec1082be83805458
   </Wrapper>
 };
 
@@ -46,9 +54,9 @@ ProfileWrapper.propTypes= {
 ProfileWrapper.defaultProps = {
   search: {
     node: {
-      avatarUrl: 'https://pbs.twimg.com/profile_images/1007061206908260353/lffy8-gX_400x400.jpg',
-      name: '',
-      login: ''
+      avatarUrl: String.prototype,
+      name: String.prototype,
+      login: String.prototype,
     }
   }
 }
