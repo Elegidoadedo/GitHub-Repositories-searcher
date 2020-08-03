@@ -14,13 +14,14 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     updateUser(search[0].node)
   },[]);
 
-  const { user, updateUser, setIsPublic } = useContext(Context);
+  const { user, updateUser, isPublic, setIsPublic } = useContext(Context);
   const [userToShow, setUserToShow] = useState(search[0].node);
   const { avatarUrl, name, login } = userToShow;
 
 
   const handleClick = () => {
-    setIsPublic(true);
+    setIsPublic(!isPublic);
+
     setUserToShow(everybody)
   };
 
@@ -28,7 +29,7 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     <Avatar src={avatarUrl} />
     <Name> {name}</Name>
     <Alias> {login}</Alias>
-    <button  className="primary-button" onClick={handleClick} >Public repositories</button>
+    {!isPublic &&<button  className="primary-button" onClick={handleClick} >Public repositories</button>}
   </Wrapper>
 };
 
