@@ -22,6 +22,10 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
 
   const handleClick = () => {
     setIsPublic(!isPublic);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f381acf15e17d38a040a3bffec1082be83805458
     setUserToShow(everybody)
   };
 
@@ -29,7 +33,11 @@ export const ProfileWrapper = ({ search , refetch, variables }) => {
     <Avatar src={avatarUrl} />
     <Name> {name}</Name>
     <Alias> {login}</Alias>
+<<<<<<< HEAD
     { !isPublic && <Button onClick={handleClick} label="Public repositories" />}
+=======
+    {!isPublic &&<button  className="primary-button" onClick={handleClick} >Public repositories</button>}
+>>>>>>> f381acf15e17d38a040a3bffec1082be83805458
   </Wrapper>
 };
 
