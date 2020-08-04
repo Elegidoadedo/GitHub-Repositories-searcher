@@ -55,10 +55,15 @@ const SEARCHREPOS = gql`
   };
 
   renderProp.propTypes = {
+    //** Loading status of the query */
     loading: PropTypes.bool,
+    //** Result of the query */
     data: PropTypes.object,
+    //** error of the query, only true when there is an error */
     error: PropTypes.bool,
+    //** Function for "renderProp" to re-make query */
     refetch: PropTypes.func,
+    //**variables for the new queries with refecthing */
     variables: PropTypes.object,
   };
 

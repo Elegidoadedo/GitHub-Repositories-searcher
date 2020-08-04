@@ -35,12 +35,12 @@ export const ReposWrapper = ({ search, refetch, variables, loading, repositoryCo
   const renderList = () => {
     if ( loading ) return <p> loading...</p>;
 
-    return search.map( ({ node }) => <Card title={node.name} description={node.description} metadata={node.updatedAt} url={node.url} key={node.id}/>)
+    return search.map( ({ node }) => <Card title={node.name} description={node.description} updatedAt={node.updatedAt} url={node.url} key={node.id}/>)
   };
 
   const renderButtons = () => (
     <>
-      {page > 1 && <Button  onClick={()=> handlePagination('previous')} label="Prev Page" />}
+      {page > 1 && <Button  onClick={()=> handlePagination('previous')} label="Prev page" />}
       {page < (Number(repositoryCount)/10) && repositoryCount > 10 && <Button onClick={()=> handlePagination('next')} label="Next page"  />}
     </>
   );

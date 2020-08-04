@@ -11,10 +11,10 @@ const renderComponent = ({
 } = {}) => render(<Input onChange={onChange} placeholder={placeholder} />);
 
 describe('Input', () => {
-  it('Works correctly', () => {
+  it('mounts correctly', () => {
     renderComponent();
   })
-  it('trigger on change', () => {
+  it('triggers the `onChange` function when typing within the input', () => {
     const onInputChange = jest.fn();
     const {  getByPlaceholderText } = renderComponent({onChange: onInputChange});
 

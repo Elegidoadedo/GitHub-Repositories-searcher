@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import {Card} from './Card';
+import { Card } from './Card';
 
-const CARD_URL = '#';
+const CARD_URL = 'www.myrepo.com';
 const CARD_TITLE = 'Text for Title';
 const CARD_META = 'Text for Meta';
 const CARD_DESCRIPTION = 'text for description';
@@ -20,8 +20,8 @@ describe('Card', () => {
     renderComponent();
   });
 
-  it('Title has href correctly', () =>{
-    const { getByText } = renderComponent({ url: CARD_URL, metadata: CARD_META });
+  it('has the proper href in card title', () =>{
+    const { getByText } = renderComponent();
 
     expect(getByText(CARD_TITLE).closest('a')).toHaveAttribute('href', CARD_URL)
   })

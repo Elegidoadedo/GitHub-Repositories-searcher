@@ -8,7 +8,8 @@ const FAKE_CONTEXT = {
   updateUser: Function.prototype,
   setIsPublic: Function.prototype,
 }
-
+const PREV_PAGE_BUTTON_LABEL = 'Prev page'
+const NEXT_PAGE_BUTTON_LABEL = 'Next page'
 
 const renderComponent = ({
   search = [],
@@ -19,22 +20,22 @@ const renderComponent = ({
   </Context.Provider>
 );
 
-describe( 'RepoWrapper', () => {
-  it('it renders correctly without repos', () => {
+describe( 'ReposWrapper', () => {
+  it('renders correctly without repos', () => {
     renderComponent()
   });
 
-  it('Next page button renders if is up 10 repos', () => {
+  it('renders the "Next page" button if `reporsitoryCount` is bigger than 10', () => {
     const { getByText } = renderComponent({repositoryCount: 20});
 
-    expect(getByText('Next page')).toBeInTheDocument()
+    expect(getByText(NEXT_PAGE_BUTTON_LABEL)).toBeInTheDocument()
   });
-  it('when clicking next page, will appear prev page button', () => {
+  
+  it('renders the "Prev page" button when clicking on "Next page" button', () => {
     const { getByText } = renderComponent({ repositoryCount: 20});
 
-    fireEvent.click(getByText('Next page'))
+    fireEvent.click(getByText(NEXT_PAGE_BUTTON_LABEL))
 
-    expect(getByText('Prev Page')).toBeInTheDocument()
+    expect(getByText(PREV_PAGE_BUTTON_LABEL)).toBeInTheDocument()
   });
-
 })
