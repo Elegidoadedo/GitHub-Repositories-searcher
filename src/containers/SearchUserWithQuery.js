@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import PropTypes from 'prop-types';
-import { ProfileWrapper } from '../components/ProfileWrapper';
+import { ProfileWrapper } from '../components/ProfileWrapper/ProfileWrapper';
 
 
 const SEARCHUSER_QUERY = gql`

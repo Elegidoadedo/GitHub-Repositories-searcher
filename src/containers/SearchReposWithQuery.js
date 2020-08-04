@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Context } from '../Context';
-import { ReposWrapper } from '../components/ReposWrapper'
+import { ReposWrapper } from '../components/ReposWrapper/ReposWrapper'
 
 const SEARCHREPOS = gql`
   query search($query: String!, $before: String, $after: String) {
