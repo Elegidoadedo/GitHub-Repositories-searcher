@@ -38,7 +38,7 @@ export const ProfileWrapper = ({ search }) => {
 };
 
 ProfileWrapper.propTypes= {
-  //** Result of tue query */
+  //** Result of the query */
   search: PropTypes.array
 };
 

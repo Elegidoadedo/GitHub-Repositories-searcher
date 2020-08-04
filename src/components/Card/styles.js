@@ -18,7 +18,7 @@ export const Description = styled.p`
   line-height: 1.5;
 `;
 
-export const Metadata = styled(Description)`
+export const Footer = styled(Description)`
   font-size: 12;
   margin-top: 8px;
 `;

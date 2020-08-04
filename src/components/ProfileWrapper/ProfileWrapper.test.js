@@ -3,19 +3,14 @@ import { render, getByText } from '@testing-library/react';
 import { ProfileWrapper } from './ProfileWrapper';
 import { Context } from '../../Context';
 
-  const FAKE_CONTEXT = {
-    user: 'fakeUser',
-    updateUser: Function.prototype,
-    setIsPublic: Function.prototype,
-    isPublic: false,
-  }
+const FAKE_CONTEXT = {
+  user: 'fakeUser',
+  updateUser: Function.prototype,
+  setIsPublic: Function.prototype,
+}
+const PUBLIC_REPOSITORIES_BUTTON_LABEL = 'Public repositories'
+const MY_REPOSITORIES_BUTTON_LABEL = 'My repositories'
 
-  const FAKE_PRIVATE_CONTEXT = {
-    user: 'fakeUser',
-    updateUser: Function.prototype,
-    setIsPublic: Function.prototype,
-    isPublic: true,
-  }
 
 const rendercomponent = ({
   search = [{node:''}],
@@ -27,19 +22,19 @@ const rendercomponent = ({
 );
 
 describe('ProfileWrapper', () => {
-
-  it('Check if it renders correctly', () => {
+  it('renders correctly', () => {
     rendercomponent();
   })
 
-  it('Check the button in initial state', () => {
-    const { getByText } = rendercomponent();
-    expect(getByText('Public repositories')).toBeInTheDocument()
+  it('displays "Public repositories" button when context `isPublic` is false', () => {
+    const { getByText } = rendercomponent({value: {...FAKE_CONTEXT, isPublic: false}});
+
+    expect(getByText(PUBLIC_REPOSITORIES_BUTTON_LABEL)).toBeInTheDocument()
   });
 
-  it('Check the button in initial state', () => {
-    const { getByText } = rendercomponent({value: FAKE_PRIVATE_CONTEXT});
+  it('displays "My repositories" button when context `isPublic` is true', () => {
+    const { getByText } = rendercomponent({value: {...FAKE_CONTEXT, isPublic: true}});
 
-    expect(getByText('My repositories')).toBeInTheDocument()
+    expect(getByText(MY_REPOSITORIES_BUTTON_LABEL)).toBeInTheDocument()
   });
 })

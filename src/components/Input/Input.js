@@ -14,5 +14,6 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  //** Button placeholder if text is empty */
   placeholder: '',
 }
