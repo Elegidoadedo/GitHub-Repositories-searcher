@@ -13,10 +13,10 @@
   })
 
   //** Adding context mockup and provider */
-  const renderComponent = () => render(
+  const renderComponent = (props) => render(
     <Context.Provider value={{user: 'hello'}}>
       <ApolloProvider client={client}>
-        <SearchReposWithQuery />
+        <SearchReposWithQuery {...props} />
       </ApolloProvider>
     </Context.Provider>
   );

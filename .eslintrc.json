@@ -2,6 +2,7 @@
     "env": {
         "jest": true,
         "browser": true,
+        "node": true,
         "es6": true
     },
     "extends": [
@@ -23,5 +24,6 @@
         "react"
     ],
     "rules": {
+        "react-hooks/exhaustive-deps": null
     }
 }

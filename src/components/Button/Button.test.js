@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import Button from './Button';
+import {Button} from './Button';
 
 const BUTTON_LABEL = 'Button label';
 
@@ -16,7 +16,6 @@ describe('Button', () => {
 
   it('calls the `onClick` function when clicking on the button', () => {
     const onButtonClick = jest.fn();
-    // const { getByText, debug } = renderComponent({ onClick: onButtonClick });
     const { getByText } = renderComponent({ onClick: onButtonClick });
 
     fireEvent.click(getByText(BUTTON_LABEL));

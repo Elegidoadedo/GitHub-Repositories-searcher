@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/App/index.js';
+import App from './App/App.js';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import Context from './Context';

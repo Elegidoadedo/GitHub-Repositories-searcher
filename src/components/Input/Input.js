@@ -7,7 +7,9 @@ export const Input = ({onChange, placeholder}) => (
 )
 
 Input.propTypes = {
+  //** the fucntion to trigger when typing, can we a debounce func */
   onChange: PropTypes.func.isRequired,
+  //** Text to display when is no value */
   placeholder: PropTypes.string,
 };
 
