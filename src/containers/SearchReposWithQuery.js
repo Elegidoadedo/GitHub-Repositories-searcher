@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Context } from '../Context';
-import { ReposWrapper } from '../components/ReposWrapper'
+import { ReposWrapper } from '../components/ReposWrapper/ReposWrapper'
 
 const SEARCHREPOS = gql`
   query search($query: String!, $before: String, $after: String) {
@@ -38,6 +38,7 @@ const SEARCHREPOS = gql`
 
   const renderProp = ({ loading, error, data='', refetch, variables }) => {
     if (error) return <p> Error...</p>
+    console.log(data)
     const { search } = data;
     return <ReposWrapper search={search.edges} refetch={refetch} variables={variables} loading={loading} repositoryCount={search.repositoryCount} pageInfo={search.pageInfo}/>
   }
@@ -54,5 +55,17 @@ const SEARCHREPOS = gql`
     </Query>
   };
 
-  SearchReposWithQuery.propTypes = {
+  renderProp.propTypes = {
+    loading: PropTypes.bool,
+    data: PropTypes.object,
+    error: PropTypes.bool,
+    refetch: PropTypes.func,
+    variables: PropTypes.object,
   };
+
+  renderProp.defaultProps = {
+    loading: false,
+    error: false,
+    refetch: Function.prototype,
+    variables: Object.prototype,
+  }

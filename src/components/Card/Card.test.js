@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import {Card} from './Card';
 
 const CARD_URL = '#';
@@ -21,9 +21,8 @@ describe('Card', () => {
   });
 
   it('Title has href correctly', () =>{
-    const onTitleClick = jest.fn();
-    const { getByText, debug } = renderComponent({ url: '#' });
+    const { getByText } = renderComponent({ url: CARD_URL, metadata: CARD_META });
+
     expect(getByText(CARD_TITLE).closest('a')).toHaveAttribute('href', CARD_URL)
-    // fireEvent.click(getByText(TITLE));
   })
 });

@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 export const Context = createContext();
 
 const Provider = ({ children }) => {
-  const [ user, setUser ] = useState({login: 'elegidoadedo'});
+  //** user is prepared to change user for a user search in future */
+  const [ user, setUser ] = useState({login: 'elegidoadedo'})
   const [ isPublic, setIsPublic ] = useState (false);
+
   const value = {
     user,
     isPublic,
