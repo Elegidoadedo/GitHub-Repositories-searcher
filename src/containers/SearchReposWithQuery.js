@@ -38,7 +38,6 @@ const SEARCHREPOS = gql`
 
   const renderProp = ({ loading, error, data='', refetch, variables }) => {
     if (error) return <p> Error...</p>
-    console.log(data)
     const { search } = data;
     return <ReposWrapper search={search.edges} refetch={refetch} variables={variables} loading={loading} repositoryCount={search.repositoryCount} pageInfo={search.pageInfo}/>
   }
